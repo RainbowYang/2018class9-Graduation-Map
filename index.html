@@ -155,7 +155,6 @@
     function formatter() {
         let template = `
         <div class="tooltip">
-            <div class="series">{{series}}</div>
             <div class="profile">
                 <div class="name-and-count">{{name}}: {{value}}人</div>
             </div>
@@ -163,7 +162,7 @@
             <div class="list">
                 {% for p in people %}
                 <div class="pinfo">
-                    <div class="info">{{p.name}} {{p.city}} {{p.school}}</div>
+                    <div class="info">{{p.name}}\t{{p.city}} {{p.school}}</div>
                 </div>
                 {% endfor %}
             </div>
