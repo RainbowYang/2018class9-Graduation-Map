@@ -2,111 +2,101 @@
 <html>
 <head>
     <meta charset='UTF-8'>
-    <title>十班毕业去向</title>
+    <title>九班毕业去向</title>
 </head>
 <body style='margin: 0'>
 <div id='map' style='width:100vw;height: 100vh;'></div>
 <link rel="stylesheet" type="text/css" href="/css/index.css">
-<script src='/js/highmaps.js'></script>
-<script src='/js/drilldown.js'></script>
-<script src='/js/nunjucks.min.js'></script>
+<script src='js/highmaps.js'></script>
+<script src='js/drilldown.js'></script>
+<script src='js/nunjucks.min.js'></script>
 
-<script src='/js/china.js'></script>
-<script src='/js/zhejiang.js'></script>
-<script src='/js/beijing.js'></script>
-<script src='/js/jiangsu.js'></script>
-<script src='/js/neimenggu.js'></script>
-<script src='/js/guangdong.js'></script>
-<script src='/js/tianjin.js'></script>
-<script src='/js/hebei.js'></script>
-<script src='/js/shanxi.js'></script>
-<script src='/js/liaoning.js'></script>
-<script src='/js/jilin.js'></script>
-<script src='/js/heilongjiang.js'></script>
-<script src='/js/shanghai.js'></script>
-<script src='/js/anhui.js'></script>
-<script src='/js/fujian.js'></script>
-<script src='/js/jiangxi.js'></script>
-<script src='/js/shandong.js'></script>
-<script src='/js/henan.js'></script>
-<script src='/js/hubei.js'></script>
-<script src='/js/hunan.js'></script>
-<script src='/js/guangxi.js'></script>
-<script src='/js/hainan.js'></script>
-<script src='/js/chongqing.js'></script>
-<script src='/js/sichuan.js'></script>
-<script src='/js/guizhou.js'></script>
-<script src='/js/yunnan.js'></script>
-<script src='/js/xizang.js'></script>
-<script src='/js/shanxi2.js'></script>
-<script src='/js/gansu.js'></script>
-<script src='/js/qinghai.js'></script>
-<script src='/js/ningxia.js'></script>
-<script src='/js/xinjiang.js'></script>
+<script src='js/china.js'></script>
+<script src='js/zhejiang.js'></script>
+<script src='js/beijing.js'></script>
+<script src='js/jiangsu.js'></script>
+<script src='js/neimenggu.js'></script>
+<script src='js/guangdong.js'></script>
+<script src='js/tianjin.js'></script>
+<script src='js/hebei.js'></script>
+<script src='js/shanxi.js'></script>
+<script src='js/liaoning.js'></script>
+<script src='js/jilin.js'></script>
+<script src='js/heilongjiang.js'></script>
+<script src='js/shanghai.js'></script>
+<script src='js/anhui.js'></script>
+<script src='js/fujian.js'></script>
+<script src='js/jiangxi.js'></script>
+<script src='js/shandong.js'></script>
+<script src='js/henan.js'></script>
+<script src='js/hubei.js'></script>
+<script src='js/hunan.js'></script>
+<script src='js/guangxi.js'></script>
+<script src='js/hainan.js'></script>
+<script src='js/hainan.js'></script>
+<script src='js/chongqing.js'></script>
+<script src='js/sichuan.js'></script>
+<script src='js/guizhou.js'></script>
+<script src='js/yunnan.js'></script>
+<script src='js/xizang.js'></script>
+<script src='js/shanxi2.js'></script>
+<script src='js/gansu.js'></script>
+<script src='js/qinghai.js'></script>
+<script src='js/ningxia.js'></script>
+<script src='js/xinjiang.js'></script>
 <script>
     let students = [
-        {name: '王宁', city: '杭州', province: '浙江', school: '浙江警察学院'},
-        {name: '苏杰', city: '杭州', province: '浙江', school: '浙江警察学院'},
-        {name: '王煜民', city: '哈尔滨', province: '黑龙江', school: '黑龙江中医药大学'},
-        {name: '卢乙源', city: '温州', province: '浙江', school: '温州医科大学'},
-        {name: '叶徐昇', city: '杭州', province: '浙江', school: '杭州师范大学'},
-        {name: '徐樱姿', city: '杭州', province: '浙江', school: '杭州师范大学'},
-        {name: '江川', city: '深圳', province: '广东', school: '南方科技大学'},
-        {name: '孙佳兰', city: '济南', province: '山东', school: '山东中医药大学'},
-        {name: '吴俊威', city: '海淀区', province: '北京', school: '北京师范大学'},
-        {name: '邱佳杰', city: '太原', province: '山西', school: '中北大学'},
-        {name: '张铭慧', city: '杭州', province: '浙江', school: '杭州电子科技大学'},
-        {name: '余晨', city: '杭州', province: '浙江', school: '杭州电子科技大学信息工程学院'},
-        // {name: '孙雯悦', city: '杭州', province: '浙江', school: '『本人不愿透露』大学'},
-        {name: '汪松波', city: '南京', province: '江苏', school: '南京大学金陵学院'},
-        {name: '张煜鑫', city: '乌鲁木齐', province: '新疆', school: '新疆大学'},
-        {name: '林淳悦', city: '普中', province: '山西', school: '太原理工大学'},
-        {name: '金林晖', city: '武汉', province: '湖北', school: '武汉纺织大学'},
-        {name: '赵坚胜', city: '合肥', province: '安徽', school: '合肥工业大学'},
-        {name: '聂凌志', city: '宁波', province: '浙江', school: '宁波工程学院'},
-        {name: '徐伊健', city: '厦门', province: '福建', school: '华侨大学厦门校区'},
-        {name: '徐佳培', city: '杭州', province: '浙江', school: '中国美术学院'},
-        {name: '梁愉', city: '杭州', province: '浙江', school: '中国计量大学'},
-        {name: '洪健栩', city: '杭州', province: '浙江', school: '中国计量大学现代科技学院'},
-        {name: '郑鏏涵', city: '温州', province: '浙江', school: '温州肯恩大学'},
-        {name: '金嘉辉', city: '杭州', province: '浙江', school: '浙江树人大学'},
-        {name: '王轶楠', city: '杭州', province: '浙江', school: '浙江外国语学院'},
-        {name: '王炫迪', city: '温州', province: '浙江', school: '温州肯恩大学'},
-        {name: '任恬娴', city: '台州', province: '浙江', school: '台州学院'},
-        {name: '李昕烨', city: '洛阳', province: '河南', school: '洛阳理工学院'},
-        {name: '杨丹丹', city: '厦门', province: '福建', school: '厦门大学嘉庚学院'},
-        {name: '应熹晗', city: '杭州', province: '浙江', school: '浙江中医药大学'},
-        {name: '陈玲珑', city: '杭州', province: '浙江', school: '浙江中医药大学'},
-        {name: '宋宇夏', city: '温州', province: '浙江', school: '温州肯恩大学'},
-        {name: '陈志豪', city: '宁波', province: '浙江', school: '宁波工程学院'},
-        {name: '邵一凡', city: '杭州', province: '浙江', school: '浙江工业大学'},
-        {name: '郑霖祺', city: '杭州', province: '浙江', school: '浙江工业大学'},
-        {name: '罗意', city: '杭州', province: '浙江', school: '浙江工业大学'},
-        {name: '金倩倩', city: '杭州', province: '浙江', school: '浙江科技学院'},
-        {name: '周书臣', city: '宁波', province: '浙江', school: '宁波大学科学技术学院'},
-        {name: '郑茹尹', city: '杭州', province: '浙江', school: '浙江工商大学'},
-        // {name: '官钇含', city: '绍兴', province: '浙江', school: '绍兴文理学院元培学院'},
-        {name: '俞佳敏', city: '奉贤区', province: '上海', school: '上海商学院'},
-        {name: '徐龙', city: '东丽区', province: '天津', school: '中国民航大学'},
-        {name: '郭雨欣', city: '温州', province: '浙江', school: '温州大学'},
-        {name: '涂恒康', city: '兰州', province: '甘肃', school: '兰州财经大学'},
-        {name: '卢叶倪萍', city: '金华', province: '浙江', school: '浙江师范大学'},
-        {name: '叶莹超', city: '金华', province: '浙江', school: '浙江师范大学'},
-        {name: '陶文轩', city: '海口', province: '海南', school: '琼台师范学院'},
-        {name: '黄可悦', city: '金华', province: '浙江', school: '浙江师范大学'},
-        {name: '傅可悦', city: '金华', province: '浙江', school: '浙江师范大学行知学院'},
-        {name: '黄佳慧', city: '杭州', province: '浙江', school: '浙江大学'},
-        {name: '曹怡宁', city: '杭州', province: '浙江', school: '浙江大学'},
-        {name: '王相涛', city: '杭州', province: '浙江', school: '浙江大学城市学院'},
-        {name: '陈泱含', city: '杭州', province: '浙江', school: '浙江大学城市学院'},
-        {name: '陈思翰', city: '杭州', province: '浙江', school: '浙江大学城市学院'},
-        {name: '蔡杭烜', city: '杭州', province: '浙江', school: '浙江农林大学'},
-        {name: '吕泠熠', city: '杭州', province: '浙江', school: '浙江农林大学'},
-        {name: '梁家懿', city: '杭州', province: '浙江', school: '浙江农林大学'},
-        {name: '翟如月', city: '杭州', province: '浙江', school: '浙江农林大学'},
-
-        {name: '蔡沁园', city: '台州', province: '浙江', school: '台州市书生中学'},
-
+        {name: '孙亦恬', city: '杭州', province: '浙江', school: '中国美术学院'},
+        {name: '盛可', city: '杭州', province: '浙江', school: '浙江工业大学'},
+        {name: '俞浩哲', city: '杭州', province: '浙江', school: '浙江工商大学'},
+        {name: '王明', city: '杭州', province: '浙江', school: '浙江财经大学'},
+        {name: '陈嘉俊', city: '杭州', province: '浙江', school: '浙江财经大学'},
+        {name: '杨雨健', city: '杭州', province: '浙江', school: '杭州电子科技大学'},
+        {name: '何诗音', city: '杭州', province: '浙江', school: '浙江理工大学'},
+        {name: '杨蓓蓓', city: '杭州', province: '浙江', school: '浙江理工大学'},
+        {name: '徐威霆', city: '杭州', province: '浙江', school: '浙江理工大学'},
+        {name: '李佳阳', city: '杭州', province: '浙江', school: '浙江中医药大学'},
+        {name: '苏嘉伟', city: '杭州', province: '浙江', school: '浙江科技学院'},
+        {name: '谢宇', city: '杭州', province: '浙江', school: '浙江农林大学'},
+        {name: '王贝千', city: '杭州', province: '浙江', school: '浙江农林大学'},
+        {name: '丁宣豪', city: '杭州', province: '浙江', school: '中国计量大学'},
+        {name: '梁爽', city: '杭州', province: '浙江', school: '杭州电子科技大学信息工程学院'},
+        {name: '梁钰荷', city: '金华', province: '浙江', school: '浙江师范大学'},
+        {name: '林安欣', city: '金华', province: '浙江', school: '浙江师范大学'},
+        {name: '朱凯迪', city: '宁波', province: '浙江', school: '宁波诺丁汉大学 '},
+        {name: '戴宏阳', city: '宁波', province: '浙江', school: '宁波大学'},
+        {name: '方欣', city: '宁波', province: '浙江', school: '宁波大学'},
+        {name: '杨志强', city: '宁波', province: '浙江', school: '宁波工程学院'},
+        {name: '丁坚耀', city: '宁波', province: '浙江', school: '浙江万里学院'},
+        {name: '王咨月', city: '温州', province: '浙江', school: '温州医科大学'},
+        {name: '张锦怡', city: '温州', province: '浙江', school: '温州肯恩大学'},
+        {name: '李宛玲', city: '湖州', province: '浙江', school: '湖州师范学院'},
+        {name: '王鑫', city: '衢州', province: '浙江', school: '衢州学院'},
+        {name: '夏崧洋', city: '衢州', province: '浙江', school: '衢州学院'},
+        {name: '阮柔依', city: '衢州', province: '浙江', school: '浙江财经大学东方学院'},
+        {name: '吴群娴', city: '绍兴', province: '浙江', school: '绍兴文理学院元培学院'},
+        {name: '陈怡希', city: '上海', province: '上海', school: '上海建桥学院'},
+        {name: '许诺', city: '无锡', province: '江苏', school: '江南大学'},
+        {name: '陈晓龙', city: '南京', province: '江苏', school: '河海大学'},
+        {name: '丁银鑫', city: '济南', province: '山东', school: '山东英才学院'},
+        {name: '金宸羽', city: '大连', province: '辽宁', school: '大连外国语大学'},
+        {name: '王欣宇', city: '朝阳', province: '北京', school: '对外经济贸易大学'},
+        {name: '丁仪', city: '海淀', province: '北京', school: '中国劳动关系学院'},
+        {name: '王迪', city: '石家庄', province: '河北', school: '河北师范大学'},
+        {name: '陈俊豪', city: '乌鲁木齐', province: '新疆', school: '新疆大学'},
+        {name: '郭嘉萱', city: '蚌埠', province: '安徽', school: '安徽财经大学'},
+        {name: '蒋永恒', city: '合肥', province: '安徽', school: '安徽农业大学'},
+        {name: '叶拯鸣', city: '芜湖', province: '安徽', school: '安徽师范大学'},
+        {name: '王子浩', city: '南昌', province: '江西', school: '江西师范大学'},
+        {name: '徐硕笛', city: '南昌', province: '江西', school: '南昌航空大学'},
+        {name: '丁浩桐', city: '武汉', province: '湖北', school: '武汉科技大学'},
+        {name: '蔡浩宇', city: '长沙', province: '湖南', school: '国防科技大学'},
+        {name: '王玮珂', city: '长沙', province: '湖南', school: '湖南师范第一学院'},
+        {name: '章诚意', city: '岳阳', province: '湖南', school: '湖南理工学院'},
+        {name: '沈家伟', city: '厦门', province: '福建', school: '集美大学'},
+        {name: '王彤安', city: '广州', province: '广东', school: '广东医科大学'},
+        {name: '洪浩涵', city: '海口', province: '海南', school: '海南大学'},
+        {name: '王珂琪', city: '海口', province: '海南', school: '海南医学院'},
     ];
 
     let data = Highcharts.geojson(Highcharts.maps['cn/china']);
@@ -167,16 +157,13 @@
         <div class="tooltip">
             <div class="series">{{series}}</div>
             <div class="profile">
-                <div class="name">{{name}}:</div>
-                <div class="value">{{value}}人</div>
+                <div class="name-and-count">{{name}}: {{value}}人</div>
             </div>
             {% if name !== '浙江' %}
             <div class="list">
                 {% for p in people %}
                 <div class="pinfo">
-                    <div class="pname">{{p.name}}</div>
-                    <div class="city">{{p.city}}</div>
-                    <div class="school">{{p.school}}</div>
+                    <div class="info">{{p.name}} {{p.city}} {{p.school}}</div>
                 </div>
                 {% endfor %}
             </div>
@@ -210,7 +197,7 @@
             },
 
             title: {
-                text: '十班去向图'
+                text: '台州市书生中学 2015级 9班 “蹭饭”地图'
             },
 
             subtitle: {

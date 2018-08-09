@@ -22,9 +22,9 @@
   display: flex;
   flex-direction: row;
   font-size: .8em; }
-  .pinfo > .pname {
+  .pinfo > .info {
     min-width: 3em; }
-  .pinfo > .city, .pinfo > .school {
-    margin-left: .6em; }
+  /*.pinfo > .city, .pinfo > .school {*/
+    /*margin-left: .3em; }*/
 
 /*# sourceMappingURL=index.css.map */
