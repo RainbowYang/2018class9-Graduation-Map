@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: column; }
 
+.series {
+  font-size: .8em; }
+
 .profile {
   display: flex;
   flex-direction: row; }
@@ -19,9 +22,9 @@
   display: flex;
   flex-direction: row;
   font-size: .8em; }
-  .pinfo > .info {
+  .pinfo > .pname {
     min-width: 3em; }
-  /*.pinfo > .city, .pinfo > .school {*/
-    /*margin-left: .3em; }*/
+  .pinfo > .city, .pinfo > .school {
+    margin-left: .6em; }
 
 /*# sourceMappingURL=index.css.map */

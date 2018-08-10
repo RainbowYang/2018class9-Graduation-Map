@@ -6,10 +6,10 @@
 </head>
 <body style='margin: 0'>
 <div id='map' style='width:100vw;height: 100vh;'></div>
-<link rel="stylesheet" type="text/css" href="/css/index.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
 <script src='https://img.hcharts.cn/highmaps/highmaps.js'></script>
 <script src='https://img.hcharts.cn/highcharts/modules/drilldown.js'></script>
-<script src='/js/nunjucks.min.js'></script>
+<script src='js/nunjucks.min.js'></script>
 
 <script src='https://data.jianshukeji.com/geochina/china.js'></script>
 <script src='https://data.jianshukeji.com/geochina/zhejiang.js'></script>
@@ -156,13 +156,17 @@
         let template = `
         <div class="tooltip">
             <div class="profile">
-                <div class="name-and-count">{{name}}: {{value}}人</div>
+                <div class="name-and-count"> {{name}}  {{value}}人</div>
             </div>
             {% if name !== '浙江' %}
             <div class="list">
                 {% for p in people %}
                 <div class="pinfo">
-                    <div class="info">{{p.name}}\t{{p.city}} {{p.school}}</div>
+                    <div class="pname">{{p.name}}</div>
+                    {% if series !== '浙江' %}
+                    <div class="city">{{p.city}}</div>
+                    {% endif %}
+                    <div class="school">{{p.school}}</div>
                 </div>
                 {% endfor %}
             </div>
@@ -216,7 +220,7 @@
                 style: {
                     'color': '#dddddd',
                     'cursor': 'default',
-                    'fontSize': '14px',
+                    'fontSize': '18px',
                     'pointerEvents': 'none',
                     'whiteSpace': 'nowrap'
                 },
