@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
     <meta charset='UTF-8'>
-    <title>九班毕业去向</title>
+    <meta name="theme-color" content="#006650">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>九班高中毕业去向地图</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93934873-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -14,14 +16,14 @@
         }
 
         gtag('js', new Date());
-
         gtag('config', 'UA-93934873-2');
     </script>
-
 </head>
-<body style='margin: 0'>
-<div id='map' style='width:100vw;height: 100vh;'></div>
-<link rel="stylesheet" type="text/css" href="css/index.css">
+<body>
+<div id='map'>
+    <div id="loading"><h1>Loading....</h1></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src='https://img.hcharts.cn/highmaps/highmaps.js'></script>
 <script src='https://img.hcharts.cn/highcharts/modules/drilldown.js'></script>
 <script src='https://cdn.bootcss.com/nunjucks/3.0.1/nunjucks.min.js'></script>
@@ -48,7 +50,6 @@
 <script src='https://data.jianshukeji.com/geochina/hunan.js'></script>
 <script src='https://data.jianshukeji.com/geochina/guangxi.js'></script>
 <script src='https://data.jianshukeji.com/geochina/hainan.js'></script>
-<script src='https://data.jianshukeji.com/geochina/hainan.js'></script>
 <script src='https://data.jianshukeji.com/geochina/chongqing.js'></script>
 <script src='https://data.jianshukeji.com/geochina/sichuan.js'></script>
 <script src='https://data.jianshukeji.com/geochina/guizhou.js'></script>
@@ -59,104 +60,147 @@
 <script src='https://data.jianshukeji.com/geochina/qinghai.js'></script>
 <script src='https://data.jianshukeji.com/geochina/ningxia.js'></script>
 <script src='https://data.jianshukeji.com/geochina/xinjiang.js'></script>
-<script>
-    let students = [
-        {name: '孙亦恬', city: '杭州', province: '浙江', school: '中国美术学院'},
-        {name: '盛可', city: '杭州', province: '浙江', school: '浙江工业大学'},
-        {name: '俞浩哲', city: '杭州', province: '浙江', school: '浙江工商大学'},
-        {name: '王明', city: '杭州', province: '浙江', school: '浙江财经大学'},
-        {name: '陈嘉俊', city: '杭州', province: '浙江', school: '浙江财经大学'},
-        {name: '杨雨健', city: '杭州', province: '浙江', school: '杭州电子科技大学'},
-        {name: '何诗音', city: '杭州', province: '浙江', school: '浙江理工大学'},
-        {name: '杨蓓蓓', city: '杭州', province: '浙江', school: '浙江理工大学'},
-        {name: '徐威霆', city: '杭州', province: '浙江', school: '浙江理工大学'},
-        {name: '李佳阳', city: '杭州', province: '浙江', school: '浙江中医药大学'},
-        {name: '苏嘉伟', city: '杭州', province: '浙江', school: '浙江科技学院'},
-        {name: '谢宇', city: '杭州', province: '浙江', school: '浙江农林大学'},
-        {name: '王贝千', city: '杭州', province: '浙江', school: '浙江农林大学'},
-        {name: '丁宣豪', city: '杭州', province: '浙江', school: '中国计量大学'},
-        {name: '梁爽', city: '杭州', province: '浙江', school: '杭州电子科技大学信息工程学院'},
-        {name: '梁钰荷', city: '金华', province: '浙江', school: '浙江师范大学'},
-        {name: '林安欣', city: '金华', province: '浙江', school: '浙江师范大学'},
-        {name: '朱凯迪', city: '宁波', province: '浙江', school: '宁波诺丁汉大学 '},
-        {name: '戴宏阳', city: '宁波', province: '浙江', school: '宁波大学'},
-        {name: '方欣', city: '宁波', province: '浙江', school: '宁波大学'},
-        {name: '杨志强', city: '宁波', province: '浙江', school: '宁波工程学院'},
-        {name: '丁坚耀', city: '宁波', province: '浙江', school: '浙江万里学院'},
-        {name: '王咨月', city: '温州', province: '浙江', school: '温州医科大学'},
-        {name: '张锦怡', city: '温州', province: '浙江', school: '温州肯恩大学'},
-        {name: '李宛玲', city: '湖州', province: '浙江', school: '湖州师范学院'},
-        {name: '王鑫', city: '衢州', province: '浙江', school: '衢州学院'},
-        {name: '夏崧洋', city: '衢州', province: '浙江', school: '衢州学院'},
-        {name: '阮柔依', city: '衢州', province: '浙江', school: '浙江财经大学东方学院'},
-        {name: '吴群娴', city: '绍兴', province: '浙江', school: '绍兴文理学院元培学院'},
-        {name: '陈怡希', city: '上海', province: '上海', school: '上海建桥学院'},
-        {name: '许诺', city: '无锡', province: '江苏', school: '江南大学'},
-        {name: '陈晓龙', city: '常州', province: '江苏', school: '河海大学'},
-        {name: '丁银鑫', city: '济南', province: '山东', school: '山东英才学院'},
-        {name: '金宸羽', city: '大连', province: '辽宁', school: '大连外国语大学'},
-        {name: '王欣宇', city: '朝阳区', province: '北京', school: '对外经济贸易大学'},
-        {name: '丁仪', city: '海淀区', province: '北京', school: '中国劳动关系学院'},
-        {name: '王迪', city: '石家庄', province: '河北', school: '河北师范大学'},
-        {name: '陈俊豪', city: '乌鲁木齐', province: '新疆', school: '新疆大学'},
-        {name: '郭嘉萱', city: '蚌埠', province: '安徽', school: '安徽财经大学'},
-        {name: '蒋永恒', city: '合肥', province: '安徽', school: '安徽农业大学'},
-        {name: '叶拯鸣', city: '芜湖', province: '安徽', school: '安徽师范大学'},
-        {name: '王子浩', city: '南昌', province: '江西', school: '江西师范大学'},
-        {name: '徐硕笛', city: '南昌', province: '江西', school: '南昌航空大学'},
-        {name: '丁浩桐', city: '武汉', province: '湖北', school: '武汉科技大学'},
-        {name: '蔡浩宇', city: '长沙', province: '湖南', school: '国防科技大学'},
-        {name: '王玮珂', city: '长沙', province: '湖南', school: '湖南师范第一学院'},
-        {name: '章诚意', city: '岳阳', province: '湖南', school: '湖南理工学院'},
-        {name: '沈家伟', city: '厦门', province: '福建', school: '集美大学'},
-        {name: '王彤安', city: '广州', province: '广东', school: '广东医科大学'},
-        {name: '洪浩涵', city: '海口', province: '海南', school: '海南大学'},
-        {name: '王珂琪', city: '海口', province: '海南', school: '海南医学院'},
-    ];
 
-    let data = Highcharts.geojson(Highcharts.maps['cn/china']);
+<script src="info.js"></script>
+<script>
+    let nation = Highcharts.geojson(Highcharts.maps['cn/china']);
 
     let provinces = {};
-    Highcharts.each(data, function (d) {
-        provinces[d.name] = d;
-        d.drilldown = d.name;
-        d.value = 0;
-        d.cities = {};
-        d.people = [];
-    });
+    for (let province of nation) {
+        let p = province;
+        provinces[p.name] = p;
+        p.drilldown = p.name;
+        p.cities = {};
+        p.people = [];
+        p.value = 0;
 
-    for (let s of students) {
-        provinces[s.province].value++;
-        provinces[s.province].people.push(s)
-    }
-
-    for (let p of Object.values(provinces)) {
-        let filename = p.properties.filename;
-        if (!Highcharts.maps[`cn/${filename}`]) {
-            continue
+        let name = p.properties.filename;
+        if (Highcharts.maps[`cn/${name}`]) {
+            p.cities = Highcharts.geojson(Highcharts.maps[`cn/${name}`]);
+            for (let city of p.cities) {
+                let c = city;
+                p.cities[c.name] = c;
+                c.people = [];
+                c.value = 0;
+            }
         }
-        let subData = p.subData = Highcharts.geojson(Highcharts.maps[`cn/${filename}`]);
-        Highcharts.each(subData, function (city) {
-            p.cities[city.name] = city;
-            city.value = 0;
-            city.people = [];
-        });
-        for (let s of students) {
-            if (p.cities[s.city] !== undefined) {
-                p.cities[s.city].value++;
-                p.cities[s.city].people.push(s);
+    }
+    for (let student of students) {
+        let s = student;
+        if (provinces[s.province]) {
+            let p = provinces[s.province];
+            p.people.push(s);
+            p.value++;
+
+            if (p.cities[s.city]) {
+                let c = p.cities[s.city];
+                c.people.push(s);
+                c.value++;
             }
         }
     }
 
+    // 初始化图表
+    let map = new Highcharts.Map('map', {
+        chart: {
+            events: {
+                //显示省级窗口
+                drilldown: function (e) {
+                    this.setTitle(null, {text: e.point.name});
+                },
+                //返回全国窗口
+                drillup: function () {
+                    data = Highcharts.maps['cn/china'];
+                    this.setTitle(null, {text: '中国'});
+                }
+            }
+        },
+
+        title: {
+            text: '2018届 台州市书生中学 九班 “蹭饭”地图',
+            style: {
+                fontSize: '20px'
+            }
+        },
+
+        subtitle: {
+            text: '中国',
+            floating: true,
+            y: 50,
+            style: {
+                fontSize: '16px'
+            }
+        },
+
+        //窗口提示
+        tooltip: {
+            useHTML: true,
+            backgroundColor: '#357fee',
+            borderRadius: 5,
+            padding: 12,
+            style: {
+                'color': '#dddddd',
+                'cursor': 'default',
+                'fontSize': '18px',
+                'pointerEvents': 'none',
+                'whiteSpace': 'nowrap'
+            },
+            formatter: formatter
+        },
+
+        colorAxis: {
+            min: 0,
+            max: 50,
+            type: 'linear',
+            minColor: '#ffffff',
+            maxColor: '#006650',
+            stops: [
+                [0, '#ffffff'],
+                [0.02, '#B2DBD5'],
+                [0.04, '#84C2B7'],
+                [0.1, '#209E85'],
+                [0.5, '#428C6D'],
+                [1, '#006650']
+            ]
+        },
+
+        series: [{
+            data: nation,
+            name: '中国',
+            tooltip: {
+                pointFormat: `{point.name}: {point.value}`
+            }
+        }],
+
+        drilldown: {
+            activeDataLabelStyle: {
+                color: '#FFFFFF',
+                textDecoration: 'none',
+                textShadow: '0 0 3px #000000'
+            },
+            drillUpButton: {
+                relativeTo: 'spacingBox',
+                position: {x: 0, y: 60}
+            },
+            series: makeSeries()
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        }
+    });
+
     function makeSeries() {
         let series = [];
-        for (let p of Object.values(provinces)) {
-            if (p.subData) {
+        for (let p of nation) {
+            if (p.cities) {
                 series.push({
                     id: p.name,
                     name: p.name,
-                    data: p.subData,
+                    data: p.cities,
                     dataLabels: {
                         enabled: true,
                         format: '{point.name}'
@@ -178,7 +222,7 @@
                 {% for p in people %}
                 <div class="pinfo">
                     <div class="pname">{{p.name}}</div>
-                    {% if series !== '浙江' %}
+                    {% if series == '中国' %}
                     <div class="city">{{p.city}}</div>
                     {% endif %}
                     <div class="school">{{p.school}}</div>
@@ -188,7 +232,6 @@
             {% endif %}
         </div>
         `;
-
         return nunjucks.renderString(template, {
             name: this.point.name,
             series: this.series.name,
@@ -196,111 +239,6 @@
             people: this.point.people
         });
     }
-
-    // 初始化图表
-    let map = new Highcharts.Map('map', {
-            chart: {
-                events: {
-                    drilldown: function (e) {
-                        let name = e.point.name;
-                        this.setTitle(null, {text: name});
-                    },
-                    drillup: function () {
-                        data = Highcharts.maps['cn/china'];
-                        this.setTitle(null, {
-                            text: '中国'
-                        });
-                    }
-                }
-            },
-
-            title: {
-                text: '台州市书生中学 2015级 9班 “蹭饭”地图'
-            },
-
-            subtitle: {
-                text: '中国',
-                floating: true,
-                y: 50,
-                style: {
-                    fontSize: '16px'
-                }
-            },
-
-            tooltip: {
-                useHTML: true,
-                backgroundColor: '#357fee',
-                borderRadius: 5,
-                padding: 12,
-                style: {
-                    'color': '#dddddd',
-                    'cursor': 'default',
-                    'fontSize': '18px',
-                    'pointerEvents': 'none',
-                    'whiteSpace': 'nowrap'
-                },
-                formatter: formatter
-            },
-
-            colorAxis: {
-                min: 0,
-                max: 50,
-                type: 'linear',
-                minColor: '#ffffff',
-                maxColor: '#006650',
-                stops: [
-                    [0, '#ffffff'],
-                    [0.02, '#B2DBD5'],
-                    [0.04, '#84C2B7'],
-                    [0.1, '#209E85'],
-                    [0.5, '#428C6D'],
-                    [1, '#006650']
-                ]
-            },
-
-            series: [{
-                data: data,
-                name: '各省人数',
-                joinBy: 'name',
-                tooltip: {
-                    pointFormat: `{point.name}: {point.value}`
-                }
-            }],
-
-            drilldown:
-                {
-                    activeDataLabelStyle: {
-                        color: '#FFFFFF',
-                        textDecoration:
-                            'none',
-                        textShadow:
-                            '0 0 3px #000000'
-                    }
-                    ,
-                    drillUpButton: {
-                        relativeTo: 'spacingBox',
-                        position:
-                            {
-                                x: 0,
-                                y:
-                                    60
-                            }
-                    }
-                    ,
-                    series: makeSeries()
-                }
-            ,
-
-            mapNavigation: {
-                enabled: true,
-                buttonOptions:
-                    {
-                        verticalAlign: 'bottom'
-                    }
-            }
-        })
-    ;
 </script>
-
 </body>
 </html>
