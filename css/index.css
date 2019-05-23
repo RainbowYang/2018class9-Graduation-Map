@@ -1,16 +1,3 @@
-body {
-    margin: 0;
-}
-
-#map {
-    width: 100vw;
-    height: 100vh;
-}
-
-#loading {
-    text-align: center;
-}
-
 .highcharts-tooltip span[data-z-index] {
     padding: .4em .8em;
 }
