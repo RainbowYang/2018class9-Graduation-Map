@@ -47,7 +47,7 @@ let students = [
     {name: '王玮珂', city: '长沙', province: '湖南', school: '湖南师范第一学院'},
     {name: '章诚意', city: '岳阳', province: '湖南', school: '湖南理工学院'},
     {name: '沈家伟', city: '厦门', province: '福建', school: '集美大学'},
-    {name: '王彤安', city: '广州', province: '广东', school: '广东医科大学'},
+    {name: '王彤安', city: '湛江', province: '广东', school: '广东医科大学'},
     {name: '洪浩涵', city: '海口', province: '海南', school: '海南大学'},
     {name: '王珂琪', city: '海口', province: '海南', school: '海南医学院'},
 ];
